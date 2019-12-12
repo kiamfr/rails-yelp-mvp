@@ -1,0 +1,36 @@
+<div class="text-center"><h2 class="mb-3"><%= @restaurant.name %></h2>
+  <div class="row">
+    <div class="col-12">
+      <h3>Address</h3>
+      <%= @restaurant.address %>
+      <h4>Phone</h4>
+      <%= @restaurant.phone_number %>
+      <h4>Category</h4>
+      <div class="mb-3"><%= @restaurant.category %></div>
+
+        <%= link_to("Add review", new_restaurant_review_path(@restaurant, @review), class: "btn-sm btn-dark rounded ") %>
+      <div class="container col-6 mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Rating</th>
+            <th scope="col">Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @restaurant.reviews.each do |review| %>
+        <tr>
+          <th scope="row"><%= review.rating %></th>
+          <td><%= review.content %></td>
+        </tr>
+
+        <% end %>
+      </tbody>
+     </table>
+     </div>
+      <p>
+      <%= link_to("<- Back", restaurants_path, class: "btn-lg btn-dark rounded-pill") %>
+      </p>
+    </div>
+  </div>
+</div>
